@@ -1,0 +1,51 @@
+﻿
+
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<style>
+
+    body
+    {
+        font-family : cursive;
+    }
+
+    body h1
+    {
+        color : white;
+        z-index :  2;
+    }
+
+    .container
+    {
+        justify-content : center;
+        align-items : center;
+        display : flex;
+        box-sizing : border-box;
+        position : relative;
+    }
+
+    .image
+    {
+        z-index : 1;
+    }
+
+    .anyád
+    {
+        background-image : url(effect.jpg);
+    }
+
+</style>
+
+<body class="anyád">
+    <div>
+        <div class="container">
+            @*<img src="~/effect.jpg" style="width: 500px; height: 500px;" class="image"></img>*@
+            <h1>Welcome</h1>
+        </div>
+        <div>
+            <h1>Sanyika</h1>
+        </div>
+    </div>
+</body>

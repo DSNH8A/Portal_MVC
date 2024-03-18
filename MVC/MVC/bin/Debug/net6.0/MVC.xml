@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MVC</name>
+    </assembly>
+    <members>
+        <member name="M:MVC.Controllers.EmployeeController.Get(System.Int32)">
+            <summary>
+            Gets the Employee associated with the given id.
+            </summary>
+            <returns>The employee object.</returns>
+        </member>
+        <member name="M:MVC.Controllers.EmployeeController.Post(MVC.Models.Employee)">
+            <summary>
+            Creates an Employee.
+            </summary>
+            <remarks>
+            Sample request:
+            
+                POST api/Employee
+                {        
+                  "firstName": "Mike",
+                  "lastName": "Andrew",
+                  "emailId": "Mike.Andrew@gmail.com"        
+                }
+            </remarks>
+            <param name="employee"></param>  
+            <response code="201">Returns the newly created item</response>
+            <response code="400">If the item is null</response>      
+        </member>
+        <member name="M:MVC.Controllers.CourseController.GetApi">
+            <summary>
+            Gets the list of all Courses.
+            </summary>
+            <returns>The list of Courses.</returns>
+        </member>
+        <member name="M:MVC.Controllers.CourseController.Get(System.Int32)">
+            <summary>
+            Gets the course associated with the given id.
+            </summary>
+            <returns>The course specified.</returns>
+        </member>
+        <member name="M:MVC.Controllers.CourseController.AddApi(MVC.Models.Course)">
+            <summary>
+            Creates a new course object.
+            </summary>
+            <returns>The course that was created.</returns>
+        </member>
+        <member name="M:MVC.Controllers.CourseController.AddSkillApi(System.Int32,System.Int32)">
+            <summary>
+            Associates a skill object with a course object based on the courses id.
+            </summary>
+            <returns>The skills associated with the chosen course.</returns>
+        </member>
+        <member name="M:MVC.Controllers.CourseController.AddMaterialApi(System.Int32,System.Int32)">
+            <summary>
+            Associates a material object with a course object based on the courses id.
+            </summary>
+            <returns>The materials associated with the chosen course.</returns>
+        </member>
+        <member name="M:MVC.Controllers.CourseController.EditApi(System.Int32,System.String,System.String)">
+            <summary>
+            Gets the course associated with the given id and saves any changes made.
+            </summary>
+            <returns>The course that was changed.</returns>
+        </member>
+        <member name="M:MVC.Controllers.CourseController.FinishCourseApi(System.Int32,MVC.Models.User)">
+            <summary>
+            Sets the chosen courses progression property to 100.
+            </summary>
+            <returns>The finshed course.</returns>
+        </member>
+        <member name="M:MVC.Controllers.HomeController.AddApi(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new user with the given data and adds it to the users list.
+            </summary>
+            <param name="userName"></param>
+            <param name="password"></param>
+            <param name="eMail"></param>
+            <returns>The vreated user object</returns>
+        </member>
+        <member name="M:MVC.Controllers.HomeController.AddCourseToUserApi(System.Int32,System.Int32)">
+            <summary>
+            Adds a course to a user object.
+            </summary>
+            <param name="id"></param>
+            <param name="userId"></param>
+            <returns>Thr course that was given to the user.</returns>
+        </member>
+        <member name="M:MVC.Controllers.HomeController.DeleteApi(System.Int32)">
+            <summary>
+            Deletes the user object associated with the given id.
+            </summary>
+            <param name="userId"></param>
+            <returns>The user list without the deleted user.</returns>
+        </member>
+        <member name="M:MVC.Controllers.MaterialController.Delete(System.Int32,System.Int32)">
+            <summary>
+            Deletes the material associated with the given id.
+            </summary>
+            <returns>The page where the course is displayed.</returns>
+        </member>
+        <member name="M:MVC.Controllers.MaterialController.GetMaterialApi(System.Int32)">
+            <summary>
+            Gets all material object.
+            </summary>
+            <returns>All materials.</returns>
+        </member>
+        <member name="M:MVC.Controllers.MaterialController.GetAllApi">
+            <summary>
+            Gets all material object.
+            </summary>
+            <returns>All materials.</returns>
+        </member>
+        <member name="M:MVC.Controllers.MaterialController.CreateElectronicCopyApi(System.String,System.Int32,System.String,System.DateTime)">
+            <summary>
+            Creates a new ElectronicCopies.
+            </summary>
+            <returns>The created object.</returns>
+        </member>
+        <member name="M:MVC.Controllers.MaterialController.CreateOnlineArticleApi(System.DateTime,System.String)">
+            <summary>
+            Creates a new OnlineArticle object.
+            </summary>
+            <returns>The created object.</returns>
+        </member>
+        <member name="M:MVC.Controllers.MaterialController.CreateVideoMaterialApi(System.Single,System.String)">
+            <summary>
+            Creates a new VideoMaterial object.
+            </summary>
+            <returns>The created object.</returns>
+        </member>
+        <member name="M:MVC.Controllers.MaterialController.AddApi(MVC.Models.Material)">
+            <summary>
+            Adds a new Material to the list.
+            </summary>
+            <returns>The created object.</returns>
+        </member>
+        <member name="M:MVC.Controllers.MaterialController.SaveApi(System.Int32,MVC.Models.Material)">
+            <summary>
+            Updates the Material object associated with th given id.
+            </summary>
+            <returns>The updated object.</returns>
+        </member>
+        <member name="M:MVC.Controllers.SkillController.GetAllApi">
+            <summary>
+            Gets all skills.
+            </summary>
+            <returns>Returns a page with all the skills displayed.</returns>
+        </member>
+        <member name="M:MVC.Controllers.SkillController.AddApi(MVC.Models.Skill)">
+            <summary>
+            Adds a skill object to the skills list.
+            </summary>
+            <returns>Redirects to the page where every skill is dsiplayed.</returns>
+        </member>
+        <member name="M:MVC.Controllers.SkillController.EditApi(System.Int32)">
+            <summary>
+            Edits a skill object.
+            </summary>
+            <returns>The edited skill object.</returns>
+        </member>
+        <member name="M:MVC.Controllers.SkillController.DeleteApi(System.Int32)">
+            <summary>
+            Deletes the skill associated with the given id.
+            </summary>
+            <returns>The list of existing skills.</returns>
+        </member>
+        <member name="T:MVC.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.Password">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.Password.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.Password.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.Password.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.Free">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.Free.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.Free.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.Free.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.user">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.user.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.user.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.user.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.API">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.API.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.API.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.API.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.email">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.email.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.email.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.email.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.webapi">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.webapi.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.webapi.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.webapi.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.Nullable">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.Nullable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.Nullable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.Nullable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.dataType">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.dataType.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.dataType.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.dataType.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.courses">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.courses.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.courses.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.courses.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.newID">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.newID.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.newID.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.newID.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.owner">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.owner.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.owner.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.owner.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.repeat">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.repeat.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.repeat.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.repeat.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:MVC.Migrations.image">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.image.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.image.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Migrations.image.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:MVC.Wrapper.MySession.GetUser">
+            <summary>
+            Gets the user stored in the session.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MVC.Wrapper.MySession.SetUser(MVC.Models.User)">
+            <summary>
+            Sets the session object with data.
+            </summary>
+            <param name="user"></param>
+        </member>
+        <member name="M:MVC.Wrapper.MySession.ClearSession">
+            <summary>
+            Clears the session object.
+            </summary>
+        </member>
+    </members>
+</doc>

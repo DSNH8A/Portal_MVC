@@ -1,0 +1,72 @@
+﻿@model Material
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" asp-action="Save" asp-route-id="@Model.Id">
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="form-control" placeholder="@Model.Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    @if (Model.Author != null)
+    {
+        <label asp-for="Author">Author:</label>
+        <input asp-for="Author" class="form-control" placeholder="@Model.Author">
+        <span asp-validation-for="Author" class="text-danger"></span>
+    }
+    @if (Model.NumberOgpages != null)
+    {
+        <label asp-for="NumberOgpages">Number of pages:</label>
+        <input asp-for="NumberOgpages" class="form-control" placeholder="@Model.NumberOgpages">
+        <span asp-validation-for="NumberOgpages" class="text-danger"></span>
+    }
+
+    @if (Model.Format != null)
+    {
+        <label asp-for="Format">Format:</label>
+        <input asp-for="Format" class="form-control" placeholder="@Model.Format">
+        <span asp-validation-for="Format" class="text-danger"></span>
+    }
+
+    @if (Model.YearOfPublication != null)
+    {
+        <label asp-for="YearOfPublication">Year of publication:</label>
+        <input asp-for="YearOfPublication" class="form-control" placeholder="@Model.YearOfPublication">
+        <span asp-validation-for="YearOfPublication" class="text-danger"></span>
+    }
+
+    @if (Model.DateOfPublication != null)
+    {
+        <label asp-for="DateOfPublication">Date of publication:</label>
+        <input asp-for="DateOfPublication" class="form-control" placeholder="@Model.DateOfPublication">
+        <span asp-validation-for="DateOfPublication" class="text-danger"></span>
+    } 
+
+    @if (Model.TypeOfDatacarrier != null)
+    {
+        <label asp-for="TypeOfDatacarrier">Type of datacarrier:</label>
+        <input asp-for="TypeOfDatacarrier" class="form-control" placeholder="@Model.TypeOfDatacarrier">
+        <span asp-validation-for="TypeOfDatacarrier" class="text-danger"></span>
+    }
+
+    @if (Model.Duration != null)
+    {
+        <label asp-for="Duration">Duration:</label>
+        <input asp-for="Duration" class="form-control" placeholder="@Model.Duration">
+        <span asp-validation-for="Duration" class="text-danger"></span>
+    }
+
+    @if (Model.Quality != null)
+    {
+        <label asp-for="Quality">Quality:</label>
+        <input asp-for="Quality" class="form-control" placeholder="@Model.Quality">
+        <span asp-validation-for="Quality" class="text-danger"></span>
+    }
+       
+    <button>
+        Add
+    </button>
+</form>

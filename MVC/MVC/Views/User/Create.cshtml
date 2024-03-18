@@ -1,0 +1,20 @@
+﻿@model User
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Create new profile</h1>
+
+<form method="post" asp-action="Create">
+
+    <label for="username">username:</label><br>
+    <input type="text" asp-for="UserName" /><br><br>
+    <label for="password">password:</label><br>
+    <input type="text" asp-for="Password" /><br><br>
+
+    <button type="submit">
+        Add
+    </button>
+</form>

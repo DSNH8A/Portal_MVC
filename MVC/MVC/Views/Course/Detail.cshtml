@@ -1,0 +1,78 @@
+﻿@model Course 
+@inject MVC.Data.MVC_Context context
+@inject MVC.Interface.ICourseRepository course
+@inject MVC.Interface.ISkillRepository skill
+@inject MVC.Interface.IMaterialRepository material
+
+
+<h1>
+    Course name
+</h1>
+<p1>@Model.Name</p1>
+
+<h1>Course Description</h1>
+<p1>@Model.Description</p1>
+
+<h1>Course ID</h1>
+<p1>@Model.Id</p1>
+
+<h1>Skills in this course</h1>
+
+<div>
+    <table class="table table-hover" style=" width:100%">
+        <tr>
+            <th><d><p1>#</p1></d></th>
+            <th><d><p1>Name</p1></d></th>
+            <th><d>SkillLevel</d></th>
+            <th><d>CourseId</d></th>
+            <th></th>
+        </tr>
+        @foreach (var item in context.Skills.Where(s => s.CourseId == Model.Id))
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.SkillLevel</td>
+                <td>@item.CourseId</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<h1>Materilas in this course</h1>
+
+<div>
+    <table class="table table-hover" style=" width:100%">
+        <tr>
+            <th><d><p1>#</p1></d></th>
+            <th><d><p1>Name</p1></d></th>
+            <th><d>CourseId</d></th>
+            <th></th>
+        </tr>
+         @foreach (var item in context.Materials.Where(m => m.CourseId == Model.Id))
+         {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.CourseId</td>
+            </tr>
+         }
+    </table>
+</div>
+<div class="row">
+    <form asp-controller="Course" asp-action="Finish" asp-route-id="@Model.Id">
+        <button type="submit" method="post">
+            Finish Course
+        </button>
+    </form>
+    <form asp-controller="Course" asp-action="Edit" asp-route-id="@Model.Id" method="get">
+        <button>
+            Add Materials
+        </button>
+    </form>
+    <form>
+        <button>
+            Skills
+        </button>
+    </form>
+</div>

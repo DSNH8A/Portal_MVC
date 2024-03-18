@@ -1,0 +1,274 @@
+﻿@model IEnumerable<Material>
+@inject MVC.Interface.IUserRepository user
+@using MVC.Wrapper;
+
+@{
+    ViewData["Title"] = "Materials";
+    MySession session = new MySession(Context.Session);
+    User currentUser = session.GetUser();
+}
+
+<style>
+
+    body
+    {
+        font-family : cursive;
+    }
+
+    .sanyika
+    {
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        display : flex;
+    }
+
+    .panel
+    {
+        width: 800px;
+        height: auto;
+        background-color: white;
+        border-radius : 10px;
+        justify-content: left;
+        align-items: start;
+        margin : 50px;
+        flex-direction : column;
+    }
+
+    .background
+    {
+        background: linear-gradient(to left, black, white);
+    }
+
+    .element
+    {
+        border-radius : 10px;
+    }
+    .container
+    {
+        justify-content : center;
+        align-items : center;
+        width: 80%;
+        box-sizing: border-box;
+        position : relative;
+    }
+
+</style>
+
+<body>
+    <div class="sanyika">
+    <div class="panel">
+        <div>
+            <h1>
+                Materials
+            </h1>
+        <h2 class="background haha">
+            Online Articles
+        </h2>
+        <table class="table table-hover " style="width:80%">
+            <tr>
+                <th><d><p1>#</p1></d></th>
+                <th><d><p1>Name</p1></d></th>
+                <th><d><p1>Date of publication</p1></d></th>
+                <th><d><p1>Data carrier</p1></d></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                if (@item.DateOfPublication != null && @item.TypeOfDatacarrier != null)
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.DateOfPublication
+                        </td>
+                        <td>
+                            @item.TypeOfDatacarrier
+                        </td>
+                        @if (currentUser != null)
+                        {
+                            <td>
+                                <form method="post" asp-action="Edit" asp-route-id="@item.Id">
+                                <button class="button" type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                    </svg>
+                                </button>
+                            </form>
+                            <form method="post" asp-controller="Material" asp-action="Delete" asp-route-id="@item.Id">
+                                <button class="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                    </svg>
+                                </button>
+                            </form>
+                            </td>  
+                        }
+                        <td>
+                            <form asp-controller="Material" asp-action="Detail" asp-route-id="@item.Id">
+                                <button type="submit" class="btn-sm btn btn-outline-secondary">
+                                    Detail
+                                </button>
+                            </form>
+                        </td>
+                    </tr>  
+                }
+            }
+        </table>
+        </div>
+    </div>
+</div>
+
+<div class="sanyika">
+        <div class="panel">
+            <h1 class="background">
+                Video Material
+            </h1>
+            <div>
+                <table class="table table-hover" style=" width:100%">
+                    <tr>
+                        <th><d><p1>#</p1></d></th>
+                        <th><d><p1>Name</p1></d></th>
+                        <th><d><p1>Duration</p1></d></th>
+                        <th><d><p1>Quality</p1></d></th>
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @if (@item.Duration != null && @item.Quality != null)
+                            {
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@item.Duration</td>
+                                <td>@item.Quality</td>
+                                if (user.LoggedinUser() != null)
+                                {
+                                    <td>
+                                        <form method="post" asp-action="Edit" asp-route-id="@item.Id">
+                                            <button class="button" type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                        <form method="post" asp-action="Delete">
+                                            <button class="button" type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                                </svg>
+                                            </button>
+                                        </form>
+
+                                    </td>
+                                }
+                                <td>
+                                    <form asp-action="Detail" asp-controller="Material" asp-route-id="@item.Id">
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                            Detail
+                                        </button>
+                                    </form>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </table>
+                @if (user.LoggedinUser() != null)
+                {
+                    <div class="center">
+                        <form method="post" asp-action="Create" asp-route-type="VideoMaterial">
+                            <button class="button"><p style="color: blue"><u>+Add Video Material</u></p></button>
+                        </form>
+                    </div>
+                }
+
+            </div>
+        </div>
+</div>
+
+<div class="sanyika">
+        <div class="panel">
+            <h1 class="background">
+                Electronic copies
+            </h1>
+            <div>
+                <table class="table table-hover" style=" width:100%">
+                    <tr>
+                        <th><d><p1>#</p1></d></th>
+                        <th><d><p1>Name</p1></d></th>
+                        <th><d><p1>Author</p1></d></th>
+                        <th><d><p1>Number of pages</p1></d></th>
+                        <th><d><p1>Year of publication</p1></d></th>
+                        <th><d><p1>Format</p1></d></th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @if (@item.Author != null && @item.NumberOgpages != null && @item.Format != null)
+                            {
+                                <td>@item.Id</td>
+                                <td>@item.Name</td>
+                                <td>@item.Author</td>
+                                <td>@item.NumberOgpages</td>
+                                <td>@item.Format</td>
+                                <td>@item.YearOfPublication</td>
+
+                                @if (user.LoggedinUser() != null)
+                                {
+                                    <td>
+                                        <form method="post" asp-action="Edit" asp-route-id="@item.Id">
+                                            <button class="button" type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                        <form method="post" asp-action="Delete">
+                                            <button class="button" type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    </td>
+                                }
+                                <td>
+                                    <a asp-controller="Material" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Detail</a>
+                                </td>
+                            }
+                        </tr>
+                    }
+                </table>
+                @if (user.LoggedinUser() != null)
+                {
+                    <div class="center">
+                        <form method="post" asp-action="Create" asp-route-type="ElectronicCopies">
+                            <button class="button"><p style="color: blue"><u>+Add Electronic copies</u></p></button>
+                        </form>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+<div class="sanyika">
+    <form asp-controller="material" asp-action="Create" asp-route-type="OnlineArticle">
+        <button class="button btn-sm" type="submit" >
+            Add new Material
+        </button>
+    </form>
+</div>
+
+</body>

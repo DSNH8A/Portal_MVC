@@ -1,0 +1,80 @@
+﻿@model User
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<style>
+    .bodyba
+    {
+        justify-content: center;
+        align-items: center;
+    }
+    .box
+    {
+        display: flex;
+        width : 700px;
+        max-width: 100%;
+        min-height: 400px;
+        height: 100%;
+        border-radius : 10px;
+        flex-direction:column;   
+        justify-content : center;
+        align-items : center;
+        background : white;
+    }
+
+    .content
+    {
+        justify-content : center;
+        align-items : center;
+        display : flex;
+        padding : 20px;
+        margin : 20px;
+        font-family : cursive;
+    }
+
+    .boxform
+    {
+        align-content : center;
+        align-items : center;
+        justify-content : center;
+        flex-direction : column;
+    }
+
+    .boxbutton
+    {
+        align-content: center;
+        align-items: center;
+        flex-direction: column; 
+        padding :  20px;
+        margin : 10px;
+        background-color : transparent;
+        color : black;
+        border-radius : 10px;
+        border-color : black;
+    }
+
+</style>
+
+<body class="align-content-center">
+    <div class="bodyba content">
+        <div class="box">
+            <div>
+                <h3>
+                    Create new Account
+                </h3>
+            </div>
+            <div>
+                <form method="post" asp-action="Registry" asp-controller="Home">
+                    <input type="text" asp-for="Email" placeholder="email" />
+                </form>
+            </div>
+            <div>
+                <button type="submit" class="boxbutton">
+                    Add
+                </button>
+            </div>
+        </div>
+    </div>
+</body>

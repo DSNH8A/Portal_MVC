@@ -1,0 +1,89 @@
+﻿@model Material
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Details</h1>
+
+
+<form method="post" asp-action="Update">
+    <label for="fname">Name:</label>
+    <br>
+    <input type="text" asp-for="Name" />
+    <br>
+    <br>
+    @if (Model.Author != null)
+    {
+        <label for="author">Author:</label>
+        <br>
+        <input type="text" asp-for="Author"></input>
+        <br>
+        <br>
+    }
+    @if (Model.NumberOgpages != null)
+    {
+        <label for="NumberOfPages">Number of pages:</label>
+        <br>
+        <input type="number" asp-for="NumberOgpages"></input>
+        <br>
+        <br>
+    }
+    @if (Model.Format != null)
+    {
+        <label for="Format">Format:</label>
+        <br>
+        <input type="text" asp-for="Format"></input>
+        <br>
+        <br>
+    }
+
+    @if (Model.YearOfPublication != null)
+    {
+        <label for="Date">Year of publication:</label>
+        <br>
+        <input type="text" asp-for="YearOfPublication"></input>
+        <br>
+        <br>
+    }
+
+    @if (Model.DateOfPublication != null)
+    {
+        <label for="DateOfPublication">Date of publication:</label>
+        <br>
+        <input type="text" asp-for="DateOfPublication"></input>
+        <br>
+        <br>
+    }
+    @if (Model.TypeOfDatacarrier != null)
+    {
+        <label for="TypeOfDataCarrier">Type of data carrier:</label>
+        <br>
+        <input type="text" asp-for="TypeOfDatacarrier"></input>
+        <br>
+        <br>
+    }
+   
+    @if (Model.Duration != null)
+    {
+        <label for="Duration">Duration:</label>
+        <br>
+        <input type="number" asp-for="Duration" />
+        <br>
+        <br>
+    }
+
+    @if (Model.Quality != null)
+    {
+        <label for="Quality">Quality:</label>
+        <br>
+        <input type="text" asp-for="Quality"></input>
+        <br>
+        <br>
+    }
+   @* <br>
+    <a asp-controller="Material" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-sm btn-outline-secondary">Detail</a>
+    <input type="submit" value="Change data">
+    <br>*@
+</form>

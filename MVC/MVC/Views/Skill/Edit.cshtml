@@ -1,0 +1,23 @@
+﻿@model Skill
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<form method="post" asp-action="Save" asp-route-id="@Model.Id">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control" placeholder="@Model.Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="SkillLevel">Skill level</label>
+        <input asp-for="SkillLevel" class="form-control" placeholder="@Model.SkillLevel>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <button>
+        Add
+    </button>
+</form>

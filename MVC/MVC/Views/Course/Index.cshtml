@@ -1,0 +1,190 @@
+﻿@model IEnumerable<Course>
+@inject MVC.Interface.ICourseRepository course
+
+@using MVC.Wrapper;
+
+@{
+    MySession session = new MySession(Context.Session);
+    User user = session.GetUser();
+}
+
+<style>
+    body
+    {
+        font-family :cursive;
+    }
+
+
+    .image
+    {
+        /*object-fit : fill;*/
+        width : 100%;
+        height : 150px;
+    }
+
+   .grid-container
+   {
+       box-sizing : border-box;
+       display : grid;
+       grid-template-columns : auto, auto, auto;
+       /*gap : 1rem;*/
+       align-items : center;
+       justify-items : center;
+       width : 100%;
+       column-gap: 10px;
+
+   }
+
+   .griditem
+   {
+        background-color: white;
+        border-radius : 10px;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        /*padding: 20px;*/
+        font-size: 16px;
+        /*margin : 10px;*/
+        text-align: center;
+       /* display : flex;
+        flex-wrap : wrap;*/
+        cursor : pointer;
+   }
+
+   .row
+   {
+       display : flex;
+       flex-wrap : wrap;
+   }
+
+   .paragraph
+   {
+       text-anchor : middle;
+   }
+
+   .button-container
+   {
+       display : flex;
+       align-items : start;
+       justify-content : flex-start;
+       margin-left : 20px;
+   }
+
+   .button
+   {
+       vertical-align : middle;
+       position : relative;
+       display : inline-flex;
+       margin : 10px;
+   }
+
+   .description
+   {
+       display : flex;
+       justify-content : flex-start;
+       font-size : 15px;
+       margin-left : 10px;
+   }
+
+   .sanyika
+   {
+       margin-top : 20px;
+   }
+
+</style>
+
+<body>
+   @* <h1>Courses Page</h1>
+    <div class="placement background">
+        <table class="table table-hover" style=" width:100%">
+            <tr>
+                <th><d><p1>#</p1></d></th>
+                <th><d><p1>Name</p1></d></th>
+                <th><d><p1>Description</p1></d></th>
+                <th><d><p1>Progress in percentage</p1></d></th>
+                <th><d><p1>Number of Skills</p1></d></th>
+                <th><d><p1>Number of Materials</p1></d></th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in course.GetAllList())
+            {
+                <tr>
+                    @if (@item.Description != null && @item.ProgressInPercentage != null)
+                    {
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td>@item.Description</td>
+                        <td>@item.ProgressInPercentage</td>
+                        <td>@course.GetCoursesSkills(item.Id).Count</td>
+                        <td>@course.GetCoursesMaterials(item.Id).Count</td>
+                        @if (user != null)
+                        {
+                            <td>
+                                <form method="post" asp-action="Edit" asp-route-id="@item.Id">
+                                    <button class="button" type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+                                        </svg>
+                                    </button>
+                                </form>
+                                <form method="post" asp-action="Delete" asp-route-id="@item.Id">
+                                    <button class="button" type="submit">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                        </svg>
+                                    </button>
+                                </form>
+                            </td>
+                        }
+                        <td><a asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Detail</a></td>
+                    }
+                </tr>
+            }
+        </table>
+        @if (user != null)
+        {
+            <div class="center">
+                <form method="post" asp-action="Create">
+                    <button class="button"><p style="color: blue"><u>+Add Course</u></p></button>
+                </form>
+            </div>
+        }
+    </div>*@
+   <div class="grid-container center">
+        
+        <div class="row row-cols-1 row-cols-2 row-cols-3">
+            @foreach (var item in course.GetAllList())
+            {
+                <div class="col sanyika">
+                    <div class="griditem">
+                        @if (item.Image != null)
+                        {
+                            <img class="image" src="@item.Image"></img>
+                        }
+                        else
+                        {
+                            <img class="image" src="~/effect.jpg" height="200px"></img>
+                        }
+                        <p class="paragraph">@item.Name</p>
+                        <div class="description">
+                            @item.Description
+                        </div>
+                        <div class="button-container">
+                            <form asp-controller="Course" asp-action="Detail" asp-route-id="@item.Id" class="button">
+                                <button class="btn btn-sm btn-outline-dark" type="submit">
+                                    Detail
+                                </button>
+                            </form>
+                            <form asp-controller="Course" asp-action="Edit" asp-route-id="@item.Id" method="post" class="button">
+                                <button class="btn btn-sm btn-outline-dark" type="submit">
+                                    Edit
+                                </button>
+                            </form>
+                          
+                        </div>
+                    </div>
+                </div>
+            }
+       </div>
+   </div>
+</body>

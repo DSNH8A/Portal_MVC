@@ -1,0 +1,30 @@
+﻿@model Material
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<h1>Add videomaterial</h1>
+
+<form method="post" asp-action="Add">
+
+    <label for="name">Name:</label>
+    <br>
+    <input type="text" asp-for="Name">
+    <br>
+    <br>
+    <label for="type">Quality</label>
+    <br>
+    <input type="text" asp-for="Quality"></input>
+    <br>
+    <br>
+    <label for="type">Duration</label>
+    <br>
+    <input type="number" asp-for="Duration"></input>
+    <br>
+    <br>
+    <button type="submit">
+        Add VideoMaterial
+    </button>
+</form>

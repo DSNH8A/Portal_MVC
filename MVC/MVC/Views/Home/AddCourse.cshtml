@@ -1,0 +1,61 @@
+﻿@model User
+@inject MVC.Interface.ICourseRepository course
+@inject MVC.Interface.IUserRepository user
+@using MVC.Wrapper;
+
+@{
+    ViewData["Title"] = "Add Course";
+    var session = new MySession(Context.Session);
+    User user = session.GetUser();
+
+    List<Course> courses = course.GetAllList();
+}
+<div>
+    <table class="table table-hover" style=" width:100%">
+        <tr>
+            <th><d><p1>#</p1></d></th>
+            <th><d><p1>Name</p1></d></th>
+            <th><d><p1>Description</p1></d></th>
+            <th><d><p1>Progress in percentage</p1></d></th>
+            <th><d><p1>Courses skillCount</p1></d></th>
+            <th><d><p1>Courses materialcount</p1></d></th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in course.GetAllList())
+            {
+            <tr>
+                @if (@item.Name != null && @item.Description != null)
+                {
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>@item.ProgressInPercentage</td>
+                    <td>@course.GetCoursesSkills(item.Id).Count</td>
+                    <td>@course.GetCoursesMaterials(item.Id).Count</td>
+
+                    <td>
+                        <form asp-action="Detail" asp-controller="Course" asp-route-model="@Model">
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                Detail
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="AddCourse" asp-controller="Home" asp-route-id="@item.Id" asp-route-userId="@user.Id">
+                            <button type="submit" class="btn btn-sm btn-outline-secondary">
+                                Add
+                            </button>
+                        </form>
+                    </td>
+                }
+            </tr>
+            }
+    </table>
+    <div class="center">
+        <form asp-action="Create" asp-controller="Course" method="get">
+            <button class="button"><p style="color: blue"><u>+Create new Course</u></p></button>
+        </form>
+    </div>
+</div>
